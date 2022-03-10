@@ -3,6 +3,8 @@ import { loadEnv } from 'vite';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import legacy from '@vitejs/plugin-legacy';
 import vue from '@vitejs/plugin-vue';
+import windiCSS from 'vite-plugin-windicss';
+import { createHtmlPlugin } from 'vite-plugin-html';
 import { resolve } from 'path';
 import { viteMockServe } from 'vite-plugin-mock';
 import styleImport from 'vite-plugin-style-import';
@@ -27,9 +29,19 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     },
     plugins: [
       vue(),
+      windiCSS(),
       vueJsx(),
       legacy({
         targets: ['defaults', 'not IE 11'],
+      }),
+      createHtmlPlugin({
+        minify: true,
+        inject: {
+          data: {
+            appName: 'name',
+            appTitle: 'title',
+          },
+        },
       }),
       createSvgIconsPlugin({
         // Specify the icon folder to be cached
@@ -45,7 +57,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         logger: true,
         injectCode: `
           import { setupProdMockServer } from '../mock/_createProdMockServer';
-    
+
           setupProdMockServer();
           `,
       }),
@@ -66,7 +78,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         less: {
           javascriptEnabled: true,
           modifyVars: {},
-          additionalData: `@import "@/styles/variables.less";`,
+          // additionalData: `@import "@/styles/variables.less";`,
         },
       },
     },
