@@ -3,7 +3,7 @@ import { Layout } from 'ant-design-vue';
 import Header from '@/layout/Header';
 import Sidebar from '@/layout/Sidebar';
 import { RouterView } from 'vue-router';
-import './app.less';
+import './style.less';
 const { Content } = Layout;
 
 export default defineComponent({
@@ -13,11 +13,9 @@ export default defineComponent({
       <Layout>
         <Header />
         <Layout>
-          <Sidebar />
-          <Content>
-            <div className="app">
-              <RouterView />
-            </div>
+          <Sidebar class={'sidebar'} />
+          <Content class={'content'}>
+            <RouterView />
           </Content>
         </Layout>
       </Layout>

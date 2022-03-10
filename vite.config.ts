@@ -18,21 +18,16 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
   return {
     base: VITE_BASE_URL,
     esbuild: {
-      // target: 'es2015'
+      target: 'es2015',
     },
     resolve: {
-      alias: [
-        {
-          find: '@',
-          replacement: resolve(__dirname, './src'),
-        },
-      ],
+      alias: {
+        '@': resolve('src'),
+      },
     },
     plugins: [
       vue(),
-      vueJsx({
-        // options are passed on to @vue/babel-plugin-jsx
-      }),
+      vueJsx(),
       legacy({
         targets: ['defaults', 'not IE 11'],
       }),
@@ -49,7 +44,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         prodEnabled: isBuild,
         logger: true,
         injectCode: `
-          import { setupProdMockServer } from '../mock/_createProductionServer';
+          import { setupProdMockServer } from '../mock/_createProdMockServer';
     
           setupProdMockServer();
           `,

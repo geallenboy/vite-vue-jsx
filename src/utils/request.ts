@@ -1,9 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { message as $message } from 'ant-design-vue';
-import { ACCESS_TOKEN_KEY } from '@/enums/cacheEnum';
-import { Storage } from '@/utils/Storage';
-import { useUserStore } from '@/store/modules/user';
-// import {ExclamationCircleOutlined} from '@ant-design/icons'
 
 export interface RequestOptions {
   /** 当前接口权限, 不需要鉴权的接口请忽略， 格式：sys:user:add */
@@ -32,11 +28,6 @@ const service = axios.create({
 
 service.interceptors.request.use(
   (config) => {
-    const token = Storage.get(ACCESS_TOKEN_KEY);
-    if (token && config.headers) {
-      // 请求头token信息，请根据实际情况进行修改
-      config.headers['Authorization'] = token;
-    }
     return config;
   },
   (error) => {
@@ -47,28 +38,8 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   (response) => {
     const res = response.data;
-
-    // if the custom code is not 200, it is judged as an error.
     if (res.code !== 200) {
       $message.error(res.message || UNKNOWN_ERROR);
-
-      // Illegal token
-      if (res.code === 11001 || res.code === 11002) {
-        window.localStorage.clear();
-        window.location.reload();
-        // to re-login
-        // Modal.confirm({
-        //   title: '警告',
-        //   content: res.message || '账号异常，您可以取消停留在该页上，或重新登录',
-        //   okText: '重新登录',
-        //   cancelText: '取消',
-        //   onOk: () => {
-        //     localStorage.clear();
-        //     window.location.reload();
-        //   }
-        // });
-      }
-
       // throw other
       const error = new Error(res.message || UNKNOWN_ERROR) as Error & { code: any };
       error.code = res.code;
@@ -105,12 +76,9 @@ export const request = async <T = any>(
   options: RequestOptions = {},
 ): Promise<T> => {
   try {
-    const { successMsg, errorMsg, permCode, isMock, isGetDataDirectly = true } = options;
-    // 如果当前是需要鉴权的接口 并且没有权限的话 则终止请求发起
-    if (permCode && !useUserStore().perms.includes(permCode)) {
-      return $message.error('你没有访问该接口的权限，请联系管理员！');
-    }
-    const fullUrl = `${(isMock ? baseMockUrl : baseApiUrl) + config.url}`;
+    const { successMsg, errorMsg, isMock, isGetDataDirectly = true } = options;
+
+    const fullUrl = `${isMock ? baseMockUrl : baseApiUrl}${config.url}`;
     config.url = fullUrl.replace(/(?<!:)\/{2,}/g, '/');
 
     const res = await service.request(config);

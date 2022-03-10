@@ -1,36 +1,49 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import { type App } from 'vue';
-import Home from '@/views/Home/Home';
-import Todo from '@/views/Pinia/Todo';
-import Pinia2 from '@/views/Pinia/Pinia2';
-import About1 from '@/views/About/About1';
-import About2 from '@/views/About/About2';
 
 const routes: Array<RouteRecordRaw> = [
   {
+    path: '/',
+    name: 'Layout',
+    redirect: '/home',
+    component: () => import(/* webpackChunkName: "layout" */ '@/views/Home/Home'),
+    meta: {
+      title: '首页',
+    },
+  },
+  {
     path: '/home',
     name: 'Home',
-    component: Home,
+    component: () => import(/* webpackChunkName: "home" */ '@/views/Home/Home'),
   },
   {
-    path: '/pinia/todo',
+    path: '/todo/list',
     name: 'todo',
-    component: Todo,
+    component: () => import(/* webpackChunkName: "todo" */ '@/views/Todo/Todo'),
   },
   {
-    path: '/pinia/pinia2',
-    name: 'Pinia2',
-    component: Pinia2,
+    path: '/todo/pinia',
+    name: 'Pinia',
+    component: () => import(/* webpackChunkName: "Pinia" */ '@/views/Todo/Pinia'),
   },
   {
-    path: '/about/about1',
-    name: 'about1',
-    component: About1,
+    path: '/about/about',
+    name: 'about',
+    component: () => import(/* webpackChunkName: "about" */ '@/views/About/About'),
   },
   {
-    path: '/about/about2',
-    name: 'about2',
-    component: About2,
+    path: '/exception/404',
+    name: '404',
+    meta: {
+      title: '404',
+    },
+    component: () => import('@/views/Exception/404'),
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: {
+      name: '404',
+    },
   },
 ];
 
@@ -42,7 +55,7 @@ const router = createRouter({
 export async function setupRouter(app: App) {
   app.use(router);
 
-  // // 路由准备就绪后挂载APP实例
+  // 路由准备就绪后挂载APP实例
   // await router.isReady();
 }
 export default router;

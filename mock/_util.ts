@@ -1,5 +1,11 @@
-// Interface data format used to return a unified format
+import { Recordable } from 'vite-plugin-mock';
 
+/**
+ * 返回成功数据
+ * @param data
+ * @param param1
+ * @returns
+ */
 export function resultSuccess<T = Recordable>(data: T, { message = 'ok' } = {}) {
   return {
     code: 200,

@@ -17,10 +17,8 @@ function setupPlugins() {
 async function setupApp() {
   // 挂载vuex状态管理
   setupStore(app);
-
   // 挂载路由
   await setupRouter(app);
-
   app.mount('#app');
 }
 setupPlugins();
