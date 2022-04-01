@@ -2,7 +2,7 @@ import { defineConfig } from 'windicss/helpers';
 
 export default defineConfig({
   extract: {
-    include: ['src/**/*.{vue,html,jsx,tsx}', 'public/**/*.{html}', './*.html'],
+    include: ['src/**/*.{vue,html,tsx}', 'public/**/*.{html}', './*.html'],
     exclude: ['node_modules', '.git', './stats.html'],
   },
   darkMode: 'class',

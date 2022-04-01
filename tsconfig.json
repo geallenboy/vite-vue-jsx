@@ -14,7 +14,9 @@
     "sourceMap": true,
     "baseUrl": ".",
     "types": [
-      "vite/client"
+
+      "vite/client",
+      "node"
     ],
     "paths": {
       "@/*": [
@@ -27,7 +29,6 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "src/**/*.less",
   ],
   "exclude": [
     "node_modules",

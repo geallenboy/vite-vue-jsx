@@ -1,9 +1,9 @@
 {
-  "name": "vue3-antd-pinia",
-  "version": "0.1.0",
+  "name": "vite2-vue3-jsx-pinia-antd",
+  "version": "1.0.0",
   "author": {
     "name": "garron",
-    "url": "xxxx"
+    "url": "https://github.com/geallenboy"
   },
   "scripts": {
     "serve": "npm run dev",
@@ -76,9 +76,9 @@
   "__npminstall_done": false,
   "repository": {
     "type": "git",
-    "url": "xxxx"
+    "url": "git@github.com:geallenboy/vite2-vue3-pinia-admin.git"
   },
-  "homepage": "xxxx",
+  "homepage": "https://github.com/geallenboy/vite2-vue3-pinia-admin",
   "keywords": [
     "vue",
     "ant-design-vue",

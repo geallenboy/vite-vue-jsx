@@ -10,9 +10,6 @@ Object.keys(modules).forEach((key) => {
   mockModules.push(...modules[key].default);
 });
 
-/**
- * Used in a production environment. Need to manually import all modules
- */
 export function setupProdMockServer() {
   console.log('mockModules', mockModules);
 

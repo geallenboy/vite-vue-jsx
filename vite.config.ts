@@ -20,7 +20,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
   return {
     base: VITE_BASE_URL,
     esbuild: {
-      target: 'es2015',
+      // target: 'es2015',
     },
     resolve: {
       alias: {
@@ -44,9 +44,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         },
       }),
       createSvgIconsPlugin({
-        // Specify the icon folder to be cached
         iconDirs: [resolve(CWD, 'src/assets/icons')],
-        // Specify symbolId format
         symbolId: 'svg-icon-[dir]-[name]',
       }),
       viteMockServe({
@@ -88,7 +86,6 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       proxy: {
         '/api': {
           target: 'https://xxx/api/',
-          // target: 'http://localhost:7001',
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api/, ''),
         },

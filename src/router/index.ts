@@ -1,43 +1,48 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+
 import { type App } from 'vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
-    name: 'Layout',
-    redirect: '/home',
-    component: () => import(/* webpackChunkName: "layout" */ '@/views/Home/Home'),
-    meta: {
-      title: '首页',
-    },
-  },
-  {
     path: '/home',
-    name: 'Home',
-    component: () => import(/* webpackChunkName: "home" */ '@/views/Home/Home'),
+    name: 'home',
+    component: () => import(/* webpackChunkName: "home" */ '@/views/home'),
   },
+
   {
-    path: '/todo/list',
+    path: '/todo',
     name: 'todo',
-    component: () => import(/* webpackChunkName: "todo" */ '@/views/Todo/Todo'),
+    component: () => import(/* webpackChunkName: "todo" */ '@/views/todo'),
   },
   {
-    path: '/todo/pinia',
-    name: 'Pinia',
-    component: () => import(/* webpackChunkName: "Pinia" */ '@/views/Todo/Pinia'),
-  },
-  {
-    path: '/about/about',
+    path: '/about',
     name: 'about',
-    component: () => import(/* webpackChunkName: "about" */ '@/views/About/About'),
+    component: () => import(/* webpackChunkName: "about" */ '@/views/about'),
   },
   {
-    path: '/exception/404',
+    path: '/result/page404',
     name: '404',
-    meta: {
-      title: '404',
-    },
-    component: () => import('@/views/Exception/404'),
+    component: () => import('@/views/result/page404'),
+  },
+  {
+    path: '/result/page403',
+    name: '403',
+    component: () => import('@/views/result/page403'),
+  },
+  {
+    path: '/result/page500',
+    name: '500',
+    component: () => import('@/views/result/page500'),
+  },
+  {
+    path: '/result/error',
+    name: 'error',
+    component: () => import('@/views/result/error'),
+  },
+  {
+    path: '/result/success',
+    name: 'success',
+    component: () => import('@/views/result/success'),
   },
   {
     path: '/:pathMatch(.*)*',
