@@ -9,5 +9,5 @@ export default defineComponent({
         <p>Copyright ©2022 garron Admin</p>
       </Footer>
     );
-  },
+  }
 });

@@ -3,10 +3,10 @@ import { request, BaseResponse } from '@/utils/request';
 /**
  * @description 用户信息
  */
-export function userInfoApi<T>() {
-  return request<BaseResponse<T>>({
+export function userInfoApi() {
+  return request<BaseResponse>({
     url: '/user/info',
-    method: 'get',
+    method: 'get'
   });
 }
 
@@ -16,6 +16,6 @@ export function userInfoApi<T>() {
 export function menuListApi() {
   return request<BaseResponse>({
     url: '/menu/list',
-    method: 'get',
+    method: 'get'
   });
 }

@@ -3,7 +3,7 @@ import { resultSuccess } from '../_util';
 
 const userInfo = {
   name: 'garron',
-  age: 30,
+  age: 30
 };
 
 export default [
@@ -11,6 +11,6 @@ export default [
     url: '/mock-api/user/info',
     timeout: 1000,
     method: 'get',
-    response: () => resultSuccess(userInfo),
-  },
+    response: () => resultSuccess(userInfo)
+  }
 ] as MockMethod[];

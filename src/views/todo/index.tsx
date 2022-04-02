@@ -6,5 +6,5 @@ export default defineComponent({
 
   render() {
     return <div>todo</div>;
-  },
+  }
 });

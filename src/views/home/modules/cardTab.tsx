@@ -47,5 +47,5 @@ export default defineComponent({
         </Space>
       </Card>
     );
-  },
+  }
 });

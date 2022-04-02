@@ -5,5 +5,5 @@ export default defineComponent({
   name: 'Error',
   setup() {
     return () => <Result status="error" title="error" subTitle="错误页面" />;
-  },
+  }
 });

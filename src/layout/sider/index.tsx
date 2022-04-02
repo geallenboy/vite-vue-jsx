@@ -5,11 +5,11 @@ import {
   HomeOutlined,
   ShopOutlined,
   ClearOutlined,
-  DotChartOutlined,
+  DotChartOutlined
 } from '@ant-design/icons-vue';
 import { menuType } from '@/interface/public';
 import { RouterLink, useRoute } from 'vue-router';
-import { usePublicStore } from '@/store/modules/public';
+
 const { Sider } = Layout;
 const { SubMenu } = Menu;
 
@@ -25,17 +25,68 @@ export default defineComponent({
   name: 'Sider',
   setup() {
     const router = useRoute();
-    const menuList = usePublicStore().getMenu;
+    const menuList = [
+      {
+        name: '首页',
+        icon: 'home',
+        url: '/',
+        id: 'sub1'
+      },
+      {
+        name: '结果页',
+        icon: 'icon',
+        url: '',
+        id: 'sub5',
+        children: [
+          {
+            name: '成功',
+            icon: '',
+            id: 'sub5-1',
+            url: '/result/success'
+          },
+          {
+            name: '失败',
+            icon: '',
+            id: 'sub5-2',
+            url: '/result/error'
+          },
+          {
+            name: 'page403',
+            icon: '',
+            id: 'sub5-3',
+            url: '/result/page403'
+          },
+          {
+            name: 'page404',
+            icon: '',
+            id: 'sub5-4',
+            url: '/result/page404'
+          },
+          {
+            name: 'page500',
+            icon: '',
+            id: 'sub5-5',
+            url: '/result/page500'
+          }
+        ]
+      },
+      {
+        name: '关于',
+        icon: 'FileOutlined',
+        url: '/about',
+        id: 'sub6'
+      }
+    ];
     const state = reactive({
       collapsed: false,
       selectedKeys: [router.path],
-      openKeys: getOpenKeys(menuList?.data),
+      openKeys: getOpenKeys(menuList)
     });
     watch(
       () => router.path,
       (_val) => {
         state.selectedKeys = [_val];
-      },
+      }
     );
     const onCollapse = () => {
       state.collapsed = !state.collapsed;
@@ -58,7 +109,7 @@ export default defineComponent({
           selectedKeys={state.selectedKeys}
           openKeys={state.openKeys}
         >
-          {menuList?.data.map((k: menuType) => {
+          {menuList.map((k: menuType) => {
             if (k && k.children && k.children.length > 0) {
               return (
                 <SubMenu key={k.id} icon={iconNode(k)} title={k.name}>
@@ -90,5 +141,5 @@ export default defineComponent({
         </Menu>
       </Sider>
     );
-  },
+  }
 });

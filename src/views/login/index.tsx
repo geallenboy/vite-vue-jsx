@@ -34,5 +34,5 @@ export default defineComponent({
         </Form>
       </div>
     );
-  },
+  }
 });

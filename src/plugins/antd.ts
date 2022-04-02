@@ -13,7 +13,7 @@ import {
   Col,
   Row,
   Select,
-  DatePicker,
+  DatePicker
 } from 'ant-design-vue';
 
 import 'dayjs/locale/zh-cn';

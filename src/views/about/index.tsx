@@ -9,10 +9,13 @@ interface Options {
 export default defineComponent({
   name: 'About1',
   setup() {
-    console.log(pkg);
     const dependencies: Options = pkg.dependencies;
     const devDependencies: Options = pkg.devDependencies;
-
+    const BlankLink = ({ url = '', text = '' }) => (
+      <a href={url} target="_blank">
+        {text}
+      </a>
+    );
     return () => (
       <>
         <Card>
@@ -31,10 +34,10 @@ export default defineComponent({
               <Tag color="processing">{'最后编译时间'}</Tag>
             </Descriptions.Item>
             <Descriptions.Item label="GitHub">
-              <Tag color="processing">{'GitHub'}</Tag>
+              <BlankLink text="GitHub" url={pkg.repository.url} />
             </Descriptions.Item>
             <Descriptions.Item label="预览地址">
-              <Tag color="processing">{'预览地址'}</Tag>
+              <BlankLink text="预览地址" url={pkg.homepage} />
             </Descriptions.Item>
           </Descriptions>
         </Card>
@@ -54,5 +57,5 @@ export default defineComponent({
         </Card>
       </>
     );
-  },
+  }
 });

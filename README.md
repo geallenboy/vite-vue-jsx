@@ -1,6 +1,6 @@
 ## vite-vue3-jsx-pinia-antd
 
-基于 vite2 vue3+jsx pinia antd 开发前端基础项目框架
+基于 vite2 vue3+jsx antd 开发前端基础项目框架
 
 ## 技术栈
 
@@ -8,7 +8,6 @@
 - 构建工具：[Vite 2.x](https://cn.vitejs.dev/)
 - 前端框架：[Vue 3.x](https://v3.cn.vuejs.org/)
 - 路由工具：[Vue Router 4.x](https://next.router.vuejs.org/zh/index.html)
-- 状态管理：[pinia](https://pinia.vuejs.org/)
 - UI 框架：[AntDesignVue 3.x](https://next.antdv.com/components/overview-cn/)
 - CSS 预编译：[Less](http://lesscss.cn/)
 - HTTP 工具：[Axios](https://axios-http.com/)
@@ -25,7 +24,7 @@
 
 ```sh
 
-git clone git@github.com:geallenboy/vite2-vue3-pinia-antd.git
+git clone git@github.com:geallenboy/vite2-vue3-jsx-antd.git
 
 ```
 

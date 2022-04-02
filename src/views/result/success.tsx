@@ -5,5 +5,5 @@ export default defineComponent({
   name: 'Success',
   setup() {
     return () => <Result status="success" title="success" subTitle="操作成功" />;
-  },
+  }
 });

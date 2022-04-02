@@ -7,7 +7,7 @@ import './style.less';
 export default defineComponent({
   setup() {
     const cardTabList = reactive({
-      list: [],
+      list: []
     });
     onMounted(async () => {
       const data = await homeCardtab();
@@ -29,5 +29,5 @@ export default defineComponent({
         </Row>
       </div>
     );
-  },
+  }
 });

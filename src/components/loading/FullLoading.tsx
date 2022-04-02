@@ -7,9 +7,9 @@ export default defineComponent({
   name: 'PageLoding',
   setup() {
     return () => (
-      <div class="loading_div">
+      <div class="loading-div">
         <Spin size={'large'} tip="页面加载中......" />
       </div>
     );
-  },
+  }
 });

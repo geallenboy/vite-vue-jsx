@@ -6,7 +6,7 @@ import { request, BaseResponse } from '@/utils/request';
 export function homeCardtab() {
   return request<BaseResponse>({
     url: '/home/cardtab',
-    method: 'get',
+    method: 'get'
   });
 }
 

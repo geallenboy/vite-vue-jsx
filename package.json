@@ -1,10 +1,6 @@
 {
   "name": "vite2-vue3-jsx-pinia-antd",
   "version": "1.0.0",
-  "author": {
-    "name": "garron",
-    "url": "https://github.com/geallenboy"
-  },
   "scripts": {
     "serve": "npm run dev",
     "start": "vite",
@@ -15,7 +11,7 @@
     "lint:eslint": "eslint --cache --max-warnings 0 \"{src,mock}/**/*.{vue,ts,tsx}\" --fix",
     "lint:lint-staged": "lint-staged",
     "lint:prettier": "prettier --write  \"src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\"",
-    "lint:stylelint": "stylelint --cache --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
+    "lint:stylelint": "stylelint --cache --fix \"**/*.{vue,less,postcss,css,scss}\"",
     "prepare": "husky install",
     "test:gzip": "npx http-server dist --cors --gzip -c-1",
     "test:br": "npx http-server dist --cors --brotli -c-1"
@@ -28,7 +24,6 @@
     "core-js": "^3.21.1",
     "dayjs": "^1.10.7",
     "nprogress": "^1.0.0-1",
-    "pinia": "2.0.11",
     "qs": "^6.10.3",
     "vue": "^3.2.31",
     "vue-router": "^4.0.12"
@@ -36,6 +31,7 @@
   "devDependencies": {
     "@commitlint/cli": "^16.2.1",
     "@commitlint/config-conventional": "^16.2.1",
+    "@garron/standard": "^1.4.1",
     "@types/node": "^17.0.18",
     "@types/webpack-env": "^1.16.3",
     "@typescript-eslint/eslint-plugin": "^5.12.0",
@@ -73,19 +69,23 @@
     "vite-plugin-windicss": "^1.8.3",
     "vue-eslint-parser": "^8.2.0"
   },
-  "__npminstall_done": false,
+  "author": {
+    "name": "garron",
+    "url": "https://github.com/geallenboy"
+  },
   "repository": {
     "type": "git",
-    "url": "git@github.com:geallenboy/vite2-vue3-pinia-admin.git"
+    "url": "git@github.com:geallenboy/vite2-vue3-jsx-antd.git"
   },
-  "homepage": "https://github.com/geallenboy/vite2-vue3-pinia-admin",
+  "homepage": "https://github.com/geallenboy/vite2-vue3-jsx-antd",
   "keywords": [
     "vue",
+    "vite2",
     "ant-design-vue",
     "vue3",
     "ts",
     "tsx",
-    "admin",
+    "pinia",
     "typescript"
   ],
   "license": "MIT",

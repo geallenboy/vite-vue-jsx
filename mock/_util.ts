@@ -11,7 +11,7 @@ export function resultSuccess<T = Recordable>(data: T, { message = 'ok' } = {}) 
     code: 200,
     data,
     message,
-    type: 'success',
+    type: 'success'
   };
 }
 
@@ -19,7 +19,7 @@ export function resultPageSuccess<T = any>(
   page: number,
   pageSize: number,
   list: T[],
-  { message = 'ok' } = {},
+  { message = 'ok' } = {}
 ) {
   const pageData = pagination(page, pageSize, list);
 
@@ -29,10 +29,10 @@ export function resultPageSuccess<T = any>(
       pagination: {
         page: ~~page,
         size: ~~pageSize,
-        total: list.length,
-      },
+        total: list.length
+      }
     }),
-    message,
+    message
   };
 }
 
@@ -41,7 +41,7 @@ export function resultError(message = 'Request failed', { code = -1, result = nu
     code,
     result,
     message,
-    type: 'error',
+    type: 'error'
   };
 }
 
