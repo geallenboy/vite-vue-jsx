@@ -6,7 +6,7 @@ export default defineComponent({
   render() {
     return (
       <Footer class={'text-center'}>
-        <p>Copyright ©2022 garron Admin</p>
+        <p>Copyright ©2022 garron</p>
       </Footer>
     );
   }

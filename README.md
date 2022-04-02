@@ -1,4 +1,4 @@
-## vite-vue3-jsx-pinia-antd
+## vite-vue3-jsx-antd
 
 基于 vite2 vue3+jsx antd 开发前端基础项目框架
 
