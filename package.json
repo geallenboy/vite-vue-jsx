@@ -1,7 +1,7 @@
 {
   "name": "@garron/vite2-vue3-jsx",
   "version": "1.0.0",
-  "description":"基于 vite2 vue3 jsx 开发前端基础项目模版",
+  "description":"基于 vite2 vue3 jsx 基础模版",
   "author": {
     "name": "garron",
     "url": "https://github.com/geallenboy"
