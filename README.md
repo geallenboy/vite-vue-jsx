@@ -1,6 +1,6 @@
-## vite-vue3-jsx-antd
+## vite-vue3-jsx
 
-基于 vite2 vue3+jsx antd 开发前端基础项目框架
+基于 vite2 vue3+jsx 开发前端基础项目框架
 
 ## 技术栈
 
@@ -24,7 +24,7 @@
 
 ```sh
 
-git clone git@github.com:geallenboy/vite2-vue3-jsx-antd.git
+git clone git@github.com:geallenboy/vite2-vue3-jsx.git
 
 ```
 

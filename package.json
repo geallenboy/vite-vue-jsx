@@ -1,15 +1,16 @@
 {
-  "name": "vite2-vue3-jsx-antd",
+  "name": "@garron/vite2-vue3-jsx",
   "version": "1.0.0",
+  "description":"基于 vite2 vue3 jsx 开发前端基础项目模版",
   "author": {
     "name": "garron",
     "url": "https://github.com/geallenboy"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:geallenboy/vite2-vue3-jsx-antd.git"
+    "url": "git@github.com:geallenboy/vite2-vue3-jsx.git"
   },
-  "homepage": "https://github.com/geallenboy/vite2-vue3-jsx-antd",
+  "homepage": "https://github.com/geallenboy/vite2-vue3-jsx",
   "keywords": [
     "vue",
     "vite2",
@@ -21,7 +22,6 @@
     "typescript"
   ],
   "license": "MIT",
-
   "scripts": {
     "serve": "npm run dev",
     "start": "vite",
@@ -31,20 +31,17 @@
     "deploy": "gh-pages -d dist",
     "lint:eslint": "eslint --cache --max-warnings 0 \"{src,mock}/**/*.{vue,ts,tsx}\" --fix",
     "lint:lint-staged": "lint-staged",
-    "lint:prettier": "prettier --write  \"src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\"",
+    "lint:prettier": "prettier --write  \"src/**/*.{js,json,tsx,css,less,scss,vue,html,ts}\"",
     "lint:stylelint": "stylelint --cache --fix \"**/*.{vue,less,postcss,css,scss}\"",
     "prepare": "husky install",
     "test:gzip": "npx http-server dist --cors --gzip -c-1",
     "test:br": "npx http-server dist --cors --brotli -c-1"
   },
   "dependencies": {
-    "@ant-design/icons-vue": "^6.0.1",
     "@vueuse/core": "^7.6.2",
-    "ant-design-vue": "3.0.0-beta.9",
     "axios": "^0.26.0",
     "core-js": "^3.21.1",
     "dayjs": "^1.10.7",
-    "nprogress": "^1.0.0-1",
     "qs": "^6.10.3",
     "vue": "^3.2.31",
     "vue-router": "^4.0.12"
@@ -81,8 +78,8 @@
     "stylelint-config-recommended": "^7.0.0",
     "stylelint-config-standard": "^25.0.0",
     "stylelint-order": "^5.0.0",
-    "typescript": "^4.5.5",
-    "vite": "^2.8.3",
+    "typescript": "^4.6.3",
+    "vite": "^2.9.1",
     "vite-plugin-html": "^3.1.0",
     "vite-plugin-mock": "^2.9.6",
     "vite-plugin-style-import": "^1.4.0",
@@ -97,12 +94,6 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix",
-      "prettier --write"
-    ],
-    "{!(package)*.json,*.code-snippets,.!(browserslist)*rc}": [
-      "prettier --write--parser json"
-    ],
-    "package.json": [
       "prettier --write"
     ],
     "*.vue": [

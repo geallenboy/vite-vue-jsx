@@ -1,28 +1,26 @@
 import { defineComponent } from 'vue';
-import { Layout } from 'ant-design-vue';
 import { RouterView } from 'vue-router';
 import HeaderPage from '@/layout/header';
 import SiderPage from '@/layout/sider';
 import FooterPage from '@/layout/footer';
 import './style.less';
-const { Content } = Layout;
 
 export default defineComponent({
   setup() {
     return () => (
       <>
-        <Layout>
+        <div>
           <HeaderPage />
-          <Layout>
+          <div>
             <SiderPage class={'sidebar'} />
-            <Content>
+            <div>
               <div class={'content'}>
                 <RouterView />
               </div>
               <FooterPage />
-            </Content>
-          </Layout>
-        </Layout>
+            </div>
+          </div>
+        </div>
       </>
     );
   }

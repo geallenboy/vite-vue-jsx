@@ -1,4 +1,3 @@
-import { Spin } from 'ant-design-vue';
 import { defineComponent } from 'vue';
 import './style.less';
 
@@ -6,10 +5,6 @@ import './style.less';
 export default defineComponent({
   name: 'PageLoding',
   setup() {
-    return () => (
-      <div class="loading-div">
-        <Spin size={'large'} tip="页面加载中......" />
-      </div>
-    );
+    return () => <div class="loading-div">页面加载中......</div>;
   }
 });

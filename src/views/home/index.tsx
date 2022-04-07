@@ -1,5 +1,4 @@
 import { homeCardtab } from '@/api/home';
-import { Col, Row } from 'ant-design-vue';
 import { defineComponent, onMounted, reactive } from 'vue';
 import { CardTab } from './modules';
 import './style.less';
@@ -18,15 +17,15 @@ export default defineComponent({
 
     return () => (
       <div class={'home'}>
-        <Row>
+        <div>
           {cardTabList.list?.map((ds: any) => {
             return (
-              <Col span={6} class="pd10">
+              <div class="pd10">
                 <CardTab data={ds} />
-              </Col>
+              </div>
             );
           })}
-        </Row>
+        </div>
       </div>
     );
   }
