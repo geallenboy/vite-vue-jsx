@@ -1,6 +1,27 @@
 {
-  "name": "vite2-vue3-jsx-pinia-antd",
+  "name": "vite2-vue3-jsx-antd",
   "version": "1.0.0",
+  "author": {
+    "name": "garron",
+    "url": "https://github.com/geallenboy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:geallenboy/vite2-vue3-jsx-antd.git"
+  },
+  "homepage": "https://github.com/geallenboy/vite2-vue3-jsx-antd",
+  "keywords": [
+    "vue",
+    "vite2",
+    "ant-design-vue",
+    "vue3",
+    "ts",
+    "tsx",
+    "pinia",
+    "typescript"
+  ],
+  "license": "MIT",
+
   "scripts": {
     "serve": "npm run dev",
     "start": "vite",
@@ -69,26 +90,7 @@
     "vite-plugin-windicss": "^1.8.3",
     "vue-eslint-parser": "^8.2.0"
   },
-  "author": {
-    "name": "garron",
-    "url": "https://github.com/geallenboy"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:geallenboy/vite2-vue3-jsx-antd.git"
-  },
-  "homepage": "https://github.com/geallenboy/vite2-vue3-jsx-antd",
-  "keywords": [
-    "vue",
-    "vite2",
-    "ant-design-vue",
-    "vue3",
-    "ts",
-    "tsx",
-    "pinia",
-    "typescript"
-  ],
-  "license": "MIT",
+
   "engines": {
     "node": "^12 || >=14"
   },
