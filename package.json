@@ -33,9 +33,7 @@
     "lint:lint-staged": "lint-staged",
     "lint:prettier": "prettier --write  \"src/**/*.{js,json,tsx,css,less,scss,vue,html,ts}\"",
     "lint:stylelint": "stylelint --cache --fix \"**/*.{vue,less,postcss,css,scss}\"",
-    "prepare": "husky install",
-    "test:gzip": "npx http-server dist --cors --gzip -c-1",
-    "test:br": "npx http-server dist --cors --brotli -c-1"
+    "prepare": "husky install"
   },
   "dependencies": {
     "@vueuse/core": "^7.6.2",
