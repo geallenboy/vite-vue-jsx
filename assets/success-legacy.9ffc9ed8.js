@@ -1,0 +1,1 @@
+System.register(["./index-legacy.73787122.js"],(function(e){"use strict";var t,n,s;return{setters:[function(e){t=e.d,n=e.c,s=e.a}],execute:function(){e("default",t({name:"Success",setup:()=>()=>n("div",null,[s("操作成功")])}))}}}));

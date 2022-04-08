@@ -1,0 +1,1 @@
+System.register(["./index-legacy.73787122.js"],(function(e){"use strict";var t,n,r;return{setters:[function(e){t=e.d,n=e.c,r=e.a}],execute:function(){e("default",t({name:"Todo",setup(){},render:()=>n("div",null,[r("todo")])}))}}}));

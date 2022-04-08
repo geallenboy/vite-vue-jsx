@@ -1,0 +1,1 @@
+System.register(["./index-legacy.73787122.js"],(function(e){"use strict";var t,n,u;return{setters:[function(e){t=e.d,n=e.c,u=e.a}],execute:function(){e("default",t({name:"404",setup:()=>()=>n("div",null,[u("对不起, 页面不存在")])}))}}}));

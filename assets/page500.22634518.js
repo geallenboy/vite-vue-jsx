@@ -1,0 +1,1 @@
+import{d as e,c as u,a}from"./index.cff60d4e.js";var r=e({name:"Page500",setup(){return()=>u("div",null,[a("\u5BF9\u4E0D\u8D77, \u670D\u52A1\u5668\u5185\u90E8\u9519\u8BEF.")])}});export{r as default};

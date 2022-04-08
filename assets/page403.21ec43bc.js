@@ -1,0 +1,1 @@
+import{d as u,c as e,a}from"./index.cff60d4e.js";var r=u({name:"403",setup(){return()=>e("div",null,[a("\u5BF9\u4E0D\u8D77, \u4F60\u6CA1\u6709\u6B64\u9875\u9762\u7684\u8BBF\u95EE\u6743\u9650.")])}});export{r as default};
