@@ -3,7 +3,6 @@ import { loadEnv } from 'vite';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import legacy from '@vitejs/plugin-legacy';
 import vue from '@vitejs/plugin-vue';
-import windiCSS from 'vite-plugin-windicss';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import { resolve } from 'path';
 import { viteMockServe } from 'vite-plugin-mock';
@@ -28,7 +27,6 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     },
     plugins: [
       vue(),
-      windiCSS(),
       vueJsx(),
       legacy({
         targets: ['defaults', 'not IE 11']
