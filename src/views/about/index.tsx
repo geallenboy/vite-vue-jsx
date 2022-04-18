@@ -19,8 +19,7 @@ export default defineComponent({
       <>
         <div>
           <div>
-            {`${pkg.name}的前端项目是基于Vue3.x、Vite2.x、
-            Ant-Design-Vue3.x 、TypeScript4.x开发，帮助你快速搭建企业级中后台产品原型。`}
+            {`${pkg.name}的前端项目是基于Vue3.x、Vite2.x、TypeScript4.x开发，帮助你快速搭建企业级中后台产品原型。`}
           </div>
         </div>
         <div class="mt-3">

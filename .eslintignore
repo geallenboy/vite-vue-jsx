@@ -14,3 +14,7 @@ dist
 /bin
 /src/mock
 Dockerfile
+package.json
+*.d.ts
+.eslintrc.js
+tsconfig.json

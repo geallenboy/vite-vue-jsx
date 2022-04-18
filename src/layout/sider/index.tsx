@@ -1,5 +1,5 @@
 import { defineComponent, reactive, watch } from 'vue';
-
+import { BASE_URL } from '@/config';
 import { menuType } from '@/interface/public';
 import { RouterLink, useRoute } from 'vue-router';
 
@@ -19,7 +19,7 @@ export default defineComponent({
       {
         name: '首页',
         icon: 'home',
-        url: '/',
+        url: `${BASE_URL}`,
         id: 'sub1'
       },
       {
@@ -32,38 +32,38 @@ export default defineComponent({
             name: '成功',
             icon: '',
             id: 'sub5-1',
-            url: '/result/success'
+            url: `${BASE_URL}result/success`
           },
           {
             name: '失败',
             icon: '',
             id: 'sub5-2',
-            url: '/result/error'
+            url: `${BASE_URL}result/error`
           },
           {
             name: 'page403',
             icon: '',
             id: 'sub5-3',
-            url: '/result/page403'
+            url: `${BASE_URL}result/page403`
           },
           {
             name: 'page404',
             icon: '',
             id: 'sub5-4',
-            url: '/result/page404'
+            url: `${BASE_URL}result/page404`
           },
           {
             name: 'page500',
             icon: '',
             id: 'sub5-5',
-            url: '/result/page500'
+            url: `${BASE_URL}result/page500`
           }
         ]
       },
       {
         name: '关于',
         icon: 'FileOutlined',
-        url: '/about',
+        url: `${BASE_URL}about`,
         id: 'sub6'
       }
     ];

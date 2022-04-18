@@ -8,20 +8,18 @@ import './style.less';
 export default defineComponent({
   setup() {
     return () => (
-      <>
+      <div>
+        <HeaderPage />
         <div>
-          <HeaderPage />
+          <SiderPage class={'sidebar'} />
           <div>
-            <SiderPage class={'sidebar'} />
-            <div>
-              <div class={'content'}>
-                <RouterView />
-              </div>
-              <FooterPage />
+            <div class={'content'}>
+              <RouterView />
             </div>
+            <FooterPage />
           </div>
         </div>
-      </>
+      </div>
     );
   }
 });

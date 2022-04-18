@@ -1,50 +1,50 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
-
+import { BASE_URL } from '@/config';
 import { type App } from 'vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
+    path: `${BASE_URL}`,
     name: 'home',
     component: () => import(/* webpackChunkName: "home" */ '@/views/home')
   },
   {
-    path: '/todo',
+    path: `${BASE_URL}todo`,
     name: 'todo',
     component: () => import(/* webpackChunkName: "todo" */ '@/views/todo')
   },
   {
-    path: '/about',
+    path: `${BASE_URL}about`,
     name: 'about',
     component: () => import(/* webpackChunkName: "about" */ '@/views/about')
   },
   {
-    path: '/result/page404',
+    path: `${BASE_URL}result/page404`,
     name: '404',
     component: () => import('@/views/result/page404')
   },
   {
-    path: '/result/page403',
+    path: `${BASE_URL}result/page403`,
     name: '403',
     component: () => import('@/views/result/page403')
   },
   {
-    path: '/result/page500',
+    path: `${BASE_URL}result/page500`,
     name: '500',
     component: () => import('@/views/result/page500')
   },
   {
-    path: '/result/error',
+    path: `${BASE_URL}result/error`,
     name: 'error',
     component: () => import('@/views/result/error')
   },
   {
-    path: '/result/success',
+    path: `${BASE_URL}result/success`,
     name: 'success',
     component: () => import('@/views/result/success')
   },
   {
-    path: '/:pathMatch(.*)*',
+    path: `${BASE_URL}:pathMatch(.*)*`,
     redirect: {
       name: '404'
     }
