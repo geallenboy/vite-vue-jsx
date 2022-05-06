@@ -3,21 +3,20 @@ import { RouterView } from 'vue-router';
 import HeaderPage from '@/layout/header';
 import SiderPage from '@/layout/sider';
 import FooterPage from '@/layout/footer';
-import './style.less';
 
 export default defineComponent({
   setup() {
     return () => (
-      <div>
-        <HeaderPage />
-        <div>
-          <SiderPage class={'sidebar'} />
-          <div>
-            <div class={'content'}>
+      <div class={'flex h-screen overflow-hidden'}>
+        <SiderPage />
+        <div class={'relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden'}>
+          <HeaderPage />
+          <main>
+            <div class={'px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto'}>
               <RouterView />
             </div>
             <FooterPage />
-          </div>
+          </main>
         </div>
       </div>
     );

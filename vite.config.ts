@@ -3,7 +3,6 @@ import { loadEnv } from 'vite';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import legacy from '@vitejs/plugin-legacy';
 import vue from '@vitejs/plugin-vue';
-import windiCSS from 'vite-plugin-windicss';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import { resolve } from 'path';
 import { viteMockServe } from 'vite-plugin-mock';
@@ -11,8 +10,8 @@ import { viteMockServe } from 'vite-plugin-mock';
 const CWD = process.cwd();
 
 export default ({ command, mode }: ConfigEnv): UserConfig => {
-  // 环境变量
-  const { VITE_BASE_URL, VITE_DROP_CONSOLE } = loadEnv(mode, CWD);
+  // 环境变量 VITE_DROP_CONSOLE
+  const { VITE_BASE_URL } = loadEnv(mode, CWD);
 
   const isBuild = command === 'build';
 
@@ -28,10 +27,9 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     },
     plugins: [
       vue(),
-      windiCSS(),
       vueJsx(),
       legacy({
-        targets: ['defaults', 'not IE 11']
+        targets: ['ie >= 11']
       }),
       createHtmlPlugin({
         minify: true,
@@ -68,13 +66,21 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     },
 
     build: {
-      // target: 'esnext',
-      terserOptions: {
-        compress: {
-          keep_infinity: true,
-          drop_console: Object.is(VITE_DROP_CONSOLE, 'true')
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            vue: ['vue', 'vue-router'],
+            dayjs: ['dayjs']
+          }
         }
       }
+      // target: 'esnext',
+      // terserOptions: {
+      //   compress: {
+      //     keep_infinity: true,
+      //     drop_console: Object.is(VITE_DROP_CONSOLE, 'true')
+      //   }
+      // }
     }
   };
 };

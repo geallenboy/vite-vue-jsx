@@ -1,6 +1,5 @@
 import { homeCardtab } from '@/api/home';
 import { defineComponent, onMounted, reactive } from 'vue';
-import { CardTab } from './modules';
 
 export default defineComponent({
   setup() {
@@ -14,16 +13,6 @@ export default defineComponent({
       }
     });
 
-    return () => (
-      <div>
-        {cardTabList.list?.map((ds: any) => {
-          return (
-            <div class="pd10">
-              <CardTab data={ds} />
-            </div>
-          );
-        })}
-      </div>
-    );
+    return () => <div>home</div>;
   }
 });
