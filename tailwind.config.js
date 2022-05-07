@@ -1,12 +1,17 @@
 const colors = require('tailwindcss/colors');
-const plugin = require('tailwindcss/plugin');
+// const plugin = require('tailwindcss/plugin');
 
 module.exports = {
-  content: ['./src/**/*.{ts,tsx}', './public/index.html'],
-  darkMode: 'class',
+  content: ['./src/**/*.{ts,tsx}', './index.html'],
+
   theme: {
     screens: {
-      xs: '480px'
+      xs: '480px',
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+      '2xl': '1536px'
     },
     colors: {
       primary: '#5c6ac4',
@@ -33,7 +38,8 @@ module.exports = {
       '9xl': '96rem'
     },
     zIndex: {
-      60: '60'
+      60: '60',
+      40: '40'
     },
     boxShadow: {
       DEFAULT: '0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.02)',
@@ -54,24 +60,20 @@ module.exports = {
       '6xl': ['3.75rem', { lineHeight: '1.2', letterSpacing: '-0.02em' }]
     },
     fontFamily: {
-      inter: ['Inter', 'sans-serif'],
-      sans: ['Graphik', 'sans-serif'],
-      serif: ['Merriweather', 'serif']
+      inter: ['Inter', 'sans-serif']
     }
   },
-  variants: {
-    extend: {}
-  },
+
   plugins: [
     // eslint-disable-next-line global-require
-    require('@tailwindcss/forms'),
+    require('@tailwindcss/forms')
     // add custom variant for expanding sidebar
-    plugin(({ addVariant, e }) => {
-      addVariant('sidebar-expanded', ({ modifySelectors, separator }) => {
-        modifySelectors(
-          ({ className }) => `.sidebar-expanded .${e(`sidebar-expanded${separator}${className}`)}`
-        );
-      });
-    })
+    // plugin(({ addVariant, e }) => {
+    //   addVariant('sidebar-expanded', ({ modifySelectors, separator }) => {
+    //     modifySelectors(
+    //       ({ className }) => `.sidebar-expanded .${e(`sidebar-expanded${separator}${className}`)}`
+    //     );
+    //   });
+    // })
   ]
 };

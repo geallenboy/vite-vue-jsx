@@ -28,7 +28,8 @@
     "mock/**/*.ts",
     "src/**/*.ts",
     "src/**/*.tsx",
-    "src/**/*.vue", "types/model.d.ts",
+    "src/**/*.vue",
+    "types/model.d.ts",
   ],
   "exclude": [
     "node_modules",

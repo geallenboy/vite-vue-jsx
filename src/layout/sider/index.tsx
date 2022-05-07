@@ -1,17 +1,35 @@
 import { defineComponent } from 'vue';
+import { usePublicStore } from '@/store/modules/public';
 
 export default defineComponent({
   name: 'Sider',
+
   setup() {
+    const usePub = usePublicStore();
+
     return () => (
-      <div>
-        {/* <div class={'fixed inset-0 bg-gray-900 bg-opacity-30 z-40 transition-opacity duration-200 lg:hidden opacity-0 pointer-events-none'}></div> */}
-        <div class="lg:-translate-x-64 flex flex-col z-40 left-0 top-0 transform h-screen w-64 bg-gray-800 p-4 ">
+      <div class={'z-40 relative'}>
+        <div
+          onClick={() => usePub.setSidebarOpen(false)}
+          class={`fixed inset-0 z-40 transition-opacity duration-200 bg-gray-900 bg-opacity-30 lg:hidden lg:z-auto ${
+            usePub.getSidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+          }`}
+        ></div>
+        {/* Sidebar */}
+        <div
+          id="sidebar"
+          class={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 transform h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-20 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-gray-800 p-4 transition-all duration-200 ease-in-out ${
+            usePub.getSidebarOpen ? 'translate-x-0' : '-translate-x-64'
+          }`}
+        >
           {/* -- Sidebar header -- */}
           <div class="flex justify-between pr-3 mb-10 sm:px-2">
             {/* <!-- Close button --> */}
-            <button class="text-gray-500 lg:opacity-0 hover:text-gray-400">
-              <span class="sr-only">Close sidebar</span>
+            <button
+              class="text-gray-500 lg:hidden hover:text-gray-400"
+              onClick={() => usePub.setSidebarOpen(false)}
+            >
+              <span class="sr-only">关闭sidebar</span>
               <svg
                 class="w-6 h-6 fill-current"
                 viewBox="0 0 24 24"
@@ -69,15 +87,15 @@ export default defineComponent({
                     <div class="flex items-center">
                       <svg class="w-6 h-6 shrink-0" viewBox="0 0 24 24">
                         <path
-                          class="!text-indigo-500 fill-current"
+                          class="fill-current !text-indigo-500 "
                           d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0z"
                         />
                         <path
-                          class="!text-indigo-600 fill-current"
+                          class="text-indigo-600 fill-current"
                           d="M12 3c-4.963 0-9 4.037-9 9s4.037 9 9 9 9-4.037 9-9-4.037-9-9-9z"
                         />
                         <path
-                          class="!text-indigo-200 fill-current"
+                          class="text-indigo-200 fill-current"
                           d="M12 15c-1.654 0-3-1.346-3-3 0-.462.113-.894.3-1.285L6 6l4.714 3.301A2.973 2.973 0 0112 9c1.654 0 3 1.346 3 3s-1.346 3-3 3z"
                         />
                       </svg>
@@ -87,13 +105,176 @@ export default defineComponent({
                     </div>
                   </a>
                 </li>
+
+                {/* <!-- Analytics --> */}
+                <li class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 ">
+                  <a
+                    class="block text-gray-200 truncate transition duration-150 hover:text-white"
+                    href="#"
+                  >
+                    <div class="flex items-center">
+                      <svg class="w-6 h-6 shrink-0" viewBox="0 0 24 24">
+                        <path
+                          class="text-gray-600 fill-current text-indigo-500"
+                          d="M0 20h24v2H0z"
+                        />
+                        <path
+                          class="text-gray-400 fill-current text-indigo-300"
+                          d="M4 18h2a1 1 0 001-1V8a1 1 0 00-1-1H4a1 1 0 00-1 1v9a1 1 0 001 1zM11 18h2a1 1 0 001-1V3a1 1 0 00-1-1h-2a1 1 0 00-1 1v14a1 1 0 001 1zM17 12v5a1 1 0 001 1h2a1 1 0 001-1v-5a1 1 0 00-1-1h-2a1 1 0 00-1 1z"
+                        />
+                      </svg>
+                      <span class="ml-3 text-sm font-medium duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
+                        Analytics
+                      </span>
+                    </div>
+                  </a>
+                </li>
+
+                <li class="px-3 py-2 rounded-sm mb-0.5 last:mb-0">
+                  <a
+                    class="block text-gray-200 truncate transition duration-150 hover:text-white"
+                    href="#0"
+                    onClick={() =>
+                      usePub.getSidebarExpanded
+                        ? usePub.setOpen(!usePub.getOpen)
+                        : usePub.setsidebarExpanded(true)
+                    }
+                  >
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center">
+                        <svg class="w-6 h-6 shrink-0" viewBox="0 0 24 24">
+                          <path
+                            class="text-gray-400 fill-current"
+                            d="M13 15l11-7L11.504.136a1 1 0 00-1.019.007L0 7l13 8z"
+                          />
+                          <path
+                            class="text-gray-700 fill-current"
+                            d="M13 15L0 7v9c0 .355.189.685.496.864L13 24v-9z"
+                          />
+                          <path
+                            class="text-gray-600 fill-current"
+                            d="M13 15.047V24l10.573-7.181A.999.999 0 0024 16V8l-11 7.047z"
+                          />
+                        </svg>
+                        <span class="ml-3 text-sm font-medium duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
+                          E-Commerce
+                        </span>
+                      </div>
+                      {/* <!-- Icon --> */}
+                      <div class="flex ml-2 duration-200 shrink-0 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
+                        <svg
+                          class={`w-3 h-3 ml-1 text-gray-400 fill-current shrink-0 ${
+                            usePub.getOpen ? 'transform rotate-180' : ''
+                          }`}
+                          viewBox="0 0 12 12"
+                        >
+                          <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
+                        </svg>
+                      </div>
+                    </div>
+                  </a>
+                  <div class="lg:hidden lg:sidebar-expanded:block 2xl:block">
+                    <ul class={`mt-1 pl-9 ${usePub.getOpen ? '' : 'hidden'}`}>
+                      <li class="mb-1 last:mb-0">
+                        <a
+                          class="block text-gray-400 truncate transition duration-150 hover:text-gray-200"
+                          href="customers.html"
+                        >
+                          <span class="text-sm font-medium duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
+                            Customers
+                          </span>
+                        </a>
+                      </li>
+                      <li class="mb-1 last:mb-0">
+                        <a
+                          class="block text-gray-400 truncate transition duration-150 hover:text-gray-200"
+                          href="orders.html"
+                        >
+                          <span class="text-sm font-medium duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
+                            Orders
+                          </span>
+                        </a>
+                      </li>
+                      <li class="mb-1 last:mb-0">
+                        <a
+                          class="block text-gray-400 truncate transition duration-150 hover:text-gray-200"
+                          href="invoices.html"
+                        >
+                          <span class="text-sm font-medium duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
+                            Invoices
+                          </span>
+                        </a>
+                      </li>
+                      <li class="mb-1 last:mb-0">
+                        <a
+                          class="block text-gray-400 truncate transition duration-150 hover:text-gray-200"
+                          href="shop.html"
+                        >
+                          <span class="text-sm font-medium duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
+                            Shop
+                          </span>
+                        </a>
+                      </li>
+                      <li class="mb-1 last:mb-0">
+                        <a
+                          class="block text-gray-400 truncate transition duration-150 hover:text-gray-200"
+                          href="shop-2.html"
+                        >
+                          <span class="text-sm font-medium duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
+                            Shop 2
+                          </span>
+                        </a>
+                      </li>
+                      <li class="mb-1 last:mb-0">
+                        <a
+                          class="block text-gray-400 truncate transition duration-150 hover:text-gray-200"
+                          href="product.html"
+                        >
+                          <span class="text-sm font-medium duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
+                            Single Product
+                          </span>
+                        </a>
+                      </li>
+                      <li class="mb-1 last:mb-0">
+                        <a
+                          class="block text-gray-400 truncate transition duration-150 hover:text-gray-200"
+                          href="cart.html"
+                        >
+                          <span class="text-sm font-medium duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
+                            Cart
+                          </span>
+                        </a>
+                      </li>
+                      <li class="mb-1 last:mb-0">
+                        <a
+                          class="block text-gray-400 truncate transition duration-150 hover:text-gray-200"
+                          href="cart-2.html"
+                        >
+                          <span class="text-sm font-medium duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
+                            Cart 2
+                          </span>
+                        </a>
+                      </li>
+                      <li class="mb-1 last:mb-0">
+                        <a
+                          class="block text-gray-400 truncate transition duration-150 hover:text-gray-200"
+                          href="pay.html"
+                        >
+                          <span class="text-sm font-medium duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
+                            Pay
+                          </span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
 
           <div class="justify-end hidden pt-3 mt-auto lg:inline-flex 2xl:hidden">
             <div class="px-3 py-2">
-              <button>
+              <button onClick={() => usePub.setsidebarExpanded(!usePub.getSidebarExpanded)}>
                 <span class="sr-only">Expand / collapse sidebar</span>
                 <svg class="w-6 h-6 fill-current sidebar-expanded:rotate-180" viewBox="0 0 24 24">
                   <path
