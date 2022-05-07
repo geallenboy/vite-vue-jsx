@@ -6,7 +6,7 @@ export default defineComponent({
     return () => (
       <div>
         {/* <div class={'fixed inset-0 bg-gray-900 bg-opacity-30 z-40 transition-opacity duration-200 lg:hidden opacity-0 pointer-events-none'}></div> */}
-        <div class="flex flex-col z-40 left-0 top-0 transform h-screen w-64 shrink-0 bg-gray-800 p-4 lg:-translate-x-64">
+        <div class="lg:-translate-x-64 flex flex-col z-40 left-0 top-0 transform h-screen w-64 bg-gray-800 p-4 ">
           {/* -- Sidebar header -- */}
           <div class="flex justify-between pr-3 mb-10 sm:px-2">
             {/* <!-- Close button --> */}
