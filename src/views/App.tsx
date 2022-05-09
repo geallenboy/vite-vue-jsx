@@ -1,10 +1,9 @@
 import { defineComponent } from 'vue';
 import { RouterView } from 'vue-router';
-import HeaderPage from '@/layout/header';
+import HeaderPage from '@/layout/header/index.vue';
 import SiderPage from '@/layout/sider';
 import { usePublicStore } from '@/store/modules/public';
-import './app.css';
-
+import './app.less';
 export default defineComponent({
   setup() {
     const usePub = usePublicStore();

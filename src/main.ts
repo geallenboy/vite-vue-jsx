@@ -14,7 +14,7 @@ async function setupApp() {
   // 挂载路由
   await setupRouter(app);
 
-  p.mount('#app');
+  app.mount('#app');
 }
 
 setupApp();

@@ -1,3 +1,30 @@
+<script lang="ts" setup>
+import { ref } from 'vue';
+import { usePublicStore } from '@/store/modules/public';
+import { onClickOutside } from '@vueuse/core';
+
+const usePub = usePublicStore();
+const modal1 = ref(false);
+const modal2 = ref(false);
+const modal3 = ref(false);
+const modal4 = ref(false);
+const modalRef1 = ref(null);
+const modalRef2 = ref(null);
+const modalRef3 = ref(null);
+const modalRef4 = ref(null);
+onClickOutside(modalRef1, () => {
+  modal1.value = false;
+});
+onClickOutside(modalRef2, () => {
+  modal2.value = false;
+});
+onClickOutside(modalRef3, () => {
+  modal3.value = false;
+});
+onClickOutside(modalRef4, () => {
+  modal4.value = false;
+});
+</script>
 <template>
   <header class="sticky top-0 z-30 bg-white border-b border-gray-200">
     <div class="px-4 sm:px-6 lg:px-8">
@@ -28,8 +55,8 @@
           <div>
             <!-- Button -->
             <button
-              @click="OnClickSearchOpen"
-              :class="{ 'bg-gray-200': searchOpen.value }"
+              @click="modal1 = true"
+              :class="{ 'bg-gray-200': modal1 }"
               class="flex items-center justify-center w-8 h-8 transition duration-150 bg-gray-100 rounded-full hover:bg-gray-200"
             >
               <span class="sr-only">Search</span>
@@ -46,15 +73,14 @@
             </button>
             <!-- Modal backdrop -->
             <div
-              @click="OnClickSearchOpen2"
-              :class="{ hidden: searchOpen.value }"
+              v-if="modal1"
               class="fixed inset-0 z-50 transition-opacity bg-gray-900 bg-opacity-30"
             ></div>
             <!-- Modal dialog -->
             <div
-              id="search-modal"
-              :class="{ hidden: searchOpen.value }"
-              class="fixed inset-0 z-50 flex items-start justify-center px-4 mb-4 overflow-hidden transform top-20 sm:px-6"
+              v-if="modal1"
+              ref="modalRef1"
+              class="fixed inset-0 z-50 flex items-start justify-center w-2/4 px-4 mb-4 overflow-hidden transform top-20 sm:px-6"
             >
               <div class="w-full max-w-2xl max-h-full overflow-auto bg-white rounded shadow-lg">
                 <!-- Search form -->
@@ -62,7 +88,6 @@
                   <div class="relative">
                     <label for="modal-search" class="sr-only"> Search </label>
                     <input
-                      id="modal-search"
                       class="w-full py-3 pl-10 pr-4 placeholder-gray-400 border-0 appearance-none focus:ring-transparent"
                       type="search"
                       placeholder="Search Anything…"
@@ -98,7 +123,7 @@
                         <a
                           class="flex items-center p-2 text-gray-800 rounded hover:text-white hover:bg-indigo-500 group"
                           href="#0"
-                          @click="searchOpen.value = false"
+                          @click="modal1 = false"
                         >
                           <svg
                             class="w-4 h-4 mr-3 text-gray-400 fill-current group-hover:text-white group-hover:text-opacity-50 shrink-0"
@@ -115,7 +140,7 @@
                         <a
                           class="flex items-center p-2 text-gray-800 rounded hover:text-white hover:bg-indigo-500 group"
                           href="#0"
-                          @click="searchOpen.value = false"
+                          @click="modal1 = false"
                         >
                           <svg
                             class="w-4 h-4 mr-3 text-gray-400 fill-current group-hover:text-white group-hover:text-opacity-50 shrink-0"
@@ -132,7 +157,7 @@
                         <a
                           class="flex items-center p-2 text-gray-800 rounded hover:text-white hover:bg-indigo-500 group"
                           href="#0"
-                          @click="searchOpen.value = false"
+                          @click="modal1 = false"
                         >
                           <svg
                             class="w-4 h-4 mr-3 text-gray-400 fill-current group-hover:text-white group-hover:text-opacity-50 shrink-0"
@@ -149,7 +174,7 @@
                         <a
                           class="flex items-center p-2 text-gray-800 rounded hover:text-white hover:bg-indigo-500 group"
                           href="#0"
-                          @click="searchOpen.value = false"
+                          @click="modal1 = false"
                         >
                           <svg
                             class="w-4 h-4 mr-3 text-gray-400 fill-current group-hover:text-white group-hover:text-opacity-50 shrink-0"
@@ -166,7 +191,7 @@
                         <a
                           class="flex items-center p-2 text-gray-800 rounded hover:text-white hover:bg-indigo-500 group"
                           href="#0"
-                          @click="searchOpen.value = false"
+                          @click="modal1 = false"
                         >
                           <svg
                             class="w-4 h-4 mr-3 text-gray-400 fill-current group-hover:text-white group-hover:text-opacity-50 shrink-0"
@@ -183,7 +208,7 @@
                         <a
                           class="flex items-center p-2 text-gray-800 rounded hover:text-white hover:bg-indigo-500 group"
                           href="#0"
-                          @click="searchOpen.value = false"
+                          @click="modal1 = false"
                         >
                           <svg
                             class="w-4 h-4 mr-3 text-gray-400 fill-current group-hover:text-white group-hover:text-opacity-50 shrink-0"
@@ -208,7 +233,7 @@
                         <a
                           class="flex items-center p-2 text-gray-800 rounded hover:text-white hover:bg-indigo-500 group"
                           href="#0"
-                          @click="searchOpen.value = true"
+                          @click="modal1 = false"
                         >
                           <svg
                             class="w-4 h-4 mr-3 text-gray-400 fill-current group-hover:text-white group-hover:text-opacity-50 shrink-0"
@@ -229,7 +254,7 @@
                         <a
                           class="flex items-center p-2 text-gray-800 rounded hover:text-white hover:bg-indigo-500 group"
                           href="#0"
-                          @click="searchOpen.value = true"
+                          @click="modal1 = false"
                         >
                           <svg
                             class="w-4 h-4 mr-3 text-gray-400 fill-current group-hover:text-white group-hover:text-opacity-50 shrink-0"
@@ -256,7 +281,8 @@
           <!-- Notifications button -->
           <div class="relative inline-flex">
             <button
-              @click="open.value = true"
+              @click="modal2 = true"
+              :class="{ 'bg-gray-200': modal2 }"
               class="flex items-center justify-center w-8 h-8 transition duration-150 bg-gray-100 rounded-full hover:bg-gray-200"
             >
               <span class="sr-only">Notifications</span>
@@ -275,8 +301,8 @@
               ></div>
             </button>
             <div
-              @click="open.value = false"
-              :class="{ hidden: open.value }"
+              v-if="modal2"
+              ref="modalRef2"
               class="origin-top-right z-10 absolute top-full right-0 -mr-48 sm:mr-0 min-w-80 bg-white border border-gray-200 py-1.5 rounded shadow-lg overflow-hidden mt-1"
             >
               <div class="text-xs font-semibold text-gray-400 uppercase pt-1.5 pb-2 px-4">
@@ -325,8 +351,8 @@
           <!-- Info button -->
           <div class="relative inline-flex">
             <button
-              @click="open2.value = !open2.value"
-              :class="{ 'bg-gray-200': open2.value }"
+              @click="modal3 = true"
+              :class="{ 'bg-gray-200': modal3.value }"
               class="flex items-center justify-center w-8 h-8 transition duration-150 bg-gray-100 rounded-full hover:bg-gray-200"
             >
               <span class="sr-only">Info</span>
@@ -338,8 +364,8 @@
               </svg>
             </button>
             <div
-              @click="open2.value = false"
-              :class="{ hidden: open2.value }"
+              v-if="modal3"
+              ref="modalRef3"
               class="origin-top-right z-10 absolute top-full right-0 min-w-44 bg-white border border-gray-200 py-1.5 rounded shadow-lg overflow-hidden mt-1"
             >
               <div class="text-xs font-semibold text-gray-400 uppercase pt-1.5 pb-2 px-3">
@@ -402,19 +428,20 @@
 
           <div class="relative inline-flex">
             <button
-              @click="open3.value = !open3.value"
+              @click="modal4 = true"
+              :class="{ 'bg-gray-200': modal4 }"
               class="inline-flex items-center justify-center group"
             >
               <img
                 class="w-8 h-8 rounded-full"
-                src="userAvatar"
+                src="@/assets/images/user-avatar-32.png"
                 width="32"
                 height="32"
                 alt="User"
               />
               <div class="flex items-center truncate">
                 <span class="ml-2 text-sm font-medium truncate group-hover:text-gray-800">
-                  Acme Inc.
+                  garron
                 </span>
                 <svg class="w-3 h-3 ml-1 text-gray-400 fill-current shrink-0" viewBox="0 0 12 12">
                   <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
@@ -423,28 +450,29 @@
             </button>
 
             <div
-              :class="{ hidden: open3.value }"
+              v-if="modal4"
+              ref="modalRef4"
               class="origin-top-right z-10 absolute top-full right-0 min-w-44 bg-white border border-gray-200 py-1.5 rounded shadow-lg overflow-hidden mt-1"
             >
               <div class="pt-0.5 pb-2 px-3 mb-1 border-b border-gray-200">
-                <div class="font-medium text-gray-800">Acme Inc.</div>
-                <div class="text-xs italic text-gray-500">Administrator</div>
+                <div class="font-medium text-gray-800">garron.</div>
+                <div class="text-xs italic text-gray-500">管理员</div>
               </div>
               <ul>
                 <li>
                   <a
                     class="flex items-center px-3 py-1 text-sm font-medium text-indigo-500 hover:text-indigo-600"
-                    href="settings.html"
+                    href="/settings"
                   >
-                    Settings
+                    设置
                   </a>
                 </li>
                 <li>
                   <a
                     class="flex items-center px-3 py-1 text-sm font-medium text-indigo-500 hover:text-indigo-600"
-                    href="signin.html"
+                    href="/signin"
                   >
-                    Sign Out
+                    退出
                   </a>
                 </li>
               </ul>
@@ -455,22 +483,3 @@
     </div>
   </header>
 </template>
-
-<script lang="ts" setup>
-import { defineComponent, ref } from 'vue';
-import { usePublicStore } from '@/store/modules/public';
-import userAvatar from '@/assets/images/user-avatar-32.png';
-const usePub = usePublicStore();
-const searchOpen = ref(false);
-const open = ref(false);
-const open2 = ref(false);
-const open3 = ref(false);
-
-const OnClickSearchOpen = () => {
-  searchOpen.value = true;
-};
-const OnClickSearchOpen2 = () => {
-  console.log(defineComponent, userAvatar);
-  searchOpen.value = true;
-};
-</script>

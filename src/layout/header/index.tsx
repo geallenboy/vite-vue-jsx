@@ -1,7 +1,8 @@
 import { defineComponent, ref } from 'vue';
 import { usePublicStore } from '@/store/modules/public';
 import userAvatar from '@/assets/images/user-avatar-32.png';
-
+import { onClickOutside } from '@vueuse/core';
+// import { OnClickOutside } from "@vueuse/components"
 export default defineComponent({
   name: 'Header',
   setup() {
@@ -10,14 +11,21 @@ export default defineComponent({
     const open = ref(false);
     const open2 = ref(false);
     const open3 = ref(false);
+    const el = ref();
 
+    const close = () => {
+      console.log(1111);
+      searchOpen.value = false;
+    };
+
+    onClickOutside(el, close);
     return () => (
       <header class="sticky top-0 bg-white border-b border-gray-200 z-30">
         <div class="px-4 sm:px-6 lg:px-8">
           <div class="flex items-center justify-between h-16 -mb-px">
-            {/* <!-- Header: Left side --> */}
+            {/*  Header: Left side  */}
             <div class="flex">
-              {/* <!-- Hamburger button --> */}
+              {/*  Hamburger button  */}
               <button
                 onClick={() => usePub.setSidebarOpen(true)}
                 class="text-gray-500 hover:text-gray-600 lg:hidden"
@@ -35,11 +43,11 @@ export default defineComponent({
               </button>
             </div>
 
-            {/* <!-- Header: Right side --> */}
+            {/*  Header: Right side  */}
             <div class="flex items-center space-x-3 ">
-              {/* <!-- Search button --> */}
+              {/*  Search button  */}
               <div>
-                {/* <!-- Button --> */}
+                {/*  Button  */}
                 <button
                   onClick={() => (searchOpen.value = true)}
                   class={`flex items-center justify-center w-8 h-8 transition duration-150 bg-gray-100 rounded-full hover:bg-gray-200 ${
@@ -58,14 +66,14 @@ export default defineComponent({
                     />
                   </svg>
                 </button>
-                {/* <!-- Modal backdrop --> */}
+                {/*  Modal backdrop  */}
                 <div
-                  onClick={() => (searchOpen.value = false)}
+                  ref="el"
                   class={`fixed inset-0 z-50 transition-opacity bg-gray-900 bg-opacity-30 ${
                     searchOpen.value ? '' : 'hidden'
                   }`}
                 ></div>
-                {/* <!-- Modal dialog --> */}
+                {/*  Modal dialog  */}
                 <div
                   id="search-modal"
                   class={`fixed inset-0 z-50 flex items-start justify-center px-4 mb-4 overflow-hidden transform top-20 sm:px-6 ${
@@ -73,7 +81,7 @@ export default defineComponent({
                   }`}
                 >
                   <div class="w-full max-w-2xl max-h-full overflow-auto bg-white rounded shadow-lg">
-                    {/* <!-- Search form --> */}
+                    {/*  Search form  */}
                     <form class="border-b border-gray-200">
                       <div class="relative">
                         <label for="modal-search" class="sr-only">
@@ -103,7 +111,7 @@ export default defineComponent({
                       </div>
                     </form>
                     <div class="px-2 py-4">
-                      {/* <!-- Recent searches --> */}
+                      {/*  Recent searches  */}
                       <div class="mb-3 last:mb-0">
                         <div class="px-2 mb-2 text-xs font-semibold text-gray-400 uppercase">
                           Recent searches
@@ -201,7 +209,7 @@ export default defineComponent({
                           </li>
                         </ul>
                       </div>
-                      {/* <!-- Recent pages --> */}
+                      {/*  Recent pages  */}
                       <div class="mb-3 last:mb-0">
                         <div class="px-2 mb-2 text-xs font-semibold text-gray-400 uppercase">
                           Recent pages
@@ -254,7 +262,7 @@ export default defineComponent({
                 </div>
               </div>
 
-              {/* <!-- Notifications button --> */}
+              {/*  Notifications button  */}
               <div class="relative inline-flex">
                 <button
                   onClick={() => (open.value = true)}
@@ -328,7 +336,7 @@ export default defineComponent({
                 </div>
               </div>
 
-              {/* <!-- Info button --> */}
+              {/*  Info button  */}
               <div class="relative inline-flex">
                 <button
                   onClick={() => (open2.value = !open2.value)}
@@ -401,7 +409,7 @@ export default defineComponent({
                 </div>
               </div>
 
-              {/* <!-- Divider --> */}
+              {/* Divider */}
               <hr class="w-px h-6 bg-gray-200" />
 
               <div class="relative inline-flex">
@@ -418,7 +426,7 @@ export default defineComponent({
                   />
                   <div class="flex items-center truncate">
                     <span class="ml-2 text-sm font-medium truncate group-hover:text-gray-800">
-                      Acme Inc.
+                      garron
                     </span>
                     <svg
                       class="w-3 h-3 ml-1 text-gray-400 fill-current shrink-0"
@@ -435,7 +443,7 @@ export default defineComponent({
                   }`}
                 >
                   <div class="pt-0.5 pb-2 px-3 mb-1 border-b border-gray-200">
-                    <div class="font-medium text-gray-800">Acme Inc.</div>
+                    <div class="font-medium text-gray-800">garron</div>
                     <div class="text-xs italic text-gray-500">Administrator</div>
                   </div>
                   <ul>
@@ -444,7 +452,7 @@ export default defineComponent({
                         class="flex items-center px-3 py-1 text-sm font-medium text-indigo-500 hover:text-indigo-600"
                         href="settings.html"
                       >
-                        Settings
+                        设置
                       </a>
                     </li>
                     <li>
@@ -452,7 +460,7 @@ export default defineComponent({
                         class="flex items-center px-3 py-1 text-sm font-medium text-indigo-500 hover:text-indigo-600"
                         href="signin.html"
                       >
-                        Sign Out
+                        退出
                       </a>
                     </li>
                   </ul>

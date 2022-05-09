@@ -4,7 +4,7 @@ export const usePublicStore = defineStore({
   id: 'info',
   state: (): any => ({
     sidebarOpen: false,
-    sidebarExpanded: false,
+    sidebarExpanded: true,
     open: false
   }),
   getters: {
